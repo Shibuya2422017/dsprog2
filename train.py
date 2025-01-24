@@ -28,6 +28,7 @@ for day_type, url in urls.items():
         schedule_data[day_type] = times
     else:
         print(f"Failed to fetch data for {day_type}. Status code: {response.status_code}")
+        times.sleep(2)
 
 df = pd.DataFrame.from_dict(schedule_data, orient="index").transpose()
 df.to_csv("train_schedule_comparison.csv", index=False)
